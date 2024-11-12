@@ -1,0 +1,25 @@
+services:
+  app:
+    build: .
+    ports:
+      - 3001:3001
+    links:
+      - redis
+    depends_on:
+      - redis
+
+  worker:
+    build:
+      context: .
+    working_dir: /app/src
+    entrypoint: celery
+    command: -A scanner.celery_app worker --loglevel=info
+    links:
+      - redis
+    depends_on:
+      - app
+      - redis
+
+  redis:
+    image: redis:latest
+    hostname: redis
