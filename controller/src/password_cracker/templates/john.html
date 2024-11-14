@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'base.html' %}
 {% block content %}
 <div class="container-fluid">
   <div class="row gx-2">
@@ -42,7 +42,7 @@
               <!-- Cracking Attemps -->
                {% for crack in cracks %}
                     <div>
-                      <a href="{{ url_for('crack_john') }}?crack_john_id={{ crack['id'] }}">{{ crack["filename"] }} - {{ crack["hash_format"] }} - {{ crack["attack_type"] }}</a>
+                      <a href="{{ url_for('password_cracker_bp.crack_john') }}?crack_john_id={{ crack['id'] }}">{{ crack["filename"] }} - {{ crack["hash_format"] }} - {{ crack["attack_type"] }}</a>
                     </div>
                {% endfor %}
             </div>

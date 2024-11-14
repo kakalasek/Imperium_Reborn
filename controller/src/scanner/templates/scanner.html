@@ -1,4 +1,4 @@
-{% extends 'layout.html' %} 
+{% extends 'base.html' %} 
 {% block content %} 
 
     <div class="container-fluid">
@@ -47,7 +47,7 @@
                   <!-- Scans -->
                   {% for scan in scans %}
                     <div>
-                      <a href="{{ url_for('scan') }}?scan_id={{ scan['id'] }}">{{scan["name"]}} {{scan["target"]}}</a>
+                      <a href="{{ url_for('scanner_bp.scan') }}?scan_id={{ scan['id'] }}">{{scan["name"]}} {{scan["target"]}}</a>
                     </div>
                   {% endfor %}
                 </div>

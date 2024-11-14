@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'base.html' %}
 {% block content %}
     <div class="container-fluid">
         <div class="row gx-3">
@@ -140,7 +140,7 @@
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-primary"><a href="{{ url_for('show_json') }}?scan_id={{ scan_id }}&host_ip={{ host_ip }}" class="link-light">View JSON</a></button>
+                        <button class="btn btn-primary"><a href="{{ url_for('scanner_bp.show_json') }}?scan_id={{ scan_id }}&host_ip={{ host_ip }}" class="link-light">View JSON</a></button>
                     </div>
                 </div>
             </div>
