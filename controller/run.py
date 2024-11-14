@@ -1,5 +1,5 @@
 from src import create_app
-from src.error.errorhandler import handle_error
+from src.errorhandler import handle_error
 from sqlalchemy.exc import OperationalError
 from sqlalchemy import text
 import os

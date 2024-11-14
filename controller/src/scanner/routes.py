@@ -4,7 +4,7 @@ from .models import Scan
 from .forms import ScanForm
 from src.exceptions import EndpointNotSet, RequestError
 from sqlalchemy.exc import OperationalError
-from src.error.errorhandler import handle_error
+from src.errorhandler import handle_error
 from requests.exceptions import ConnectionError
 import requests
 import os

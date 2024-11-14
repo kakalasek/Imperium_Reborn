@@ -3,7 +3,7 @@ from . import password_cracker_bp
 from .models import Crack_john
 from .forms import JohnForm
 from src.exceptions import EndpointNotSet, RequestError
-from src.error.errorhandler import handle_error
+from src.errorhandler import handle_error
 from sqlalchemy.exc import OperationalError
 from requests import ConnectionError
 import os

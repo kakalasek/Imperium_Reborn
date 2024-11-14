@@ -10,7 +10,7 @@ import os
 from celery import shared_task
 from util import celery_init_app
 from sqlalchemy.exc import OperationalError
-from errorhandler import handle_error
+from scanner.src.error.errorhandler import handle_error
 from exceptions import ParameterException
 from sqlalchemy import text
 
