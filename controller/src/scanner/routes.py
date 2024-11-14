@@ -11,7 +11,7 @@ import os
 import json
 
 scans = []
-endpoint = os.environ["SCANNER_ENDPOINT"] if os.environ["SCANNER_ENDPOINT"] else 'http://127.0.0.1:3000'
+endpoint = os.getenv("SCANNER_ENDPOINT") if os.getenv("SCANNER_ENDPOINT") else 'http://127.0.0.1:3000'
 
 def get_scans() -> None:   
     """

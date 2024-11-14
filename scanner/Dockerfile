@@ -19,4 +19,4 @@ RUN apt -y install nmap=7.93+dfsg1-1
 # Copy everything from the current folder to /app
 COPY . .
 
-CMD ["python", "src/scanner.py"]
+CMD ["python", "run.py"]

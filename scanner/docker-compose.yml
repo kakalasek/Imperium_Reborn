@@ -3,6 +3,8 @@ services:
     build: .
     ports:
       - 3001:3001
+    environment:
+      RUNNING_PORT: 3001
     links:
       - redis
     depends_on:
@@ -11,9 +13,9 @@ services:
   worker:
     build:
       context: .
-    working_dir: /app/src
+    working_dir: /app
     entrypoint: celery
-    command: -A scanner.celery_app worker --loglevel=info
+    command: -A src.celery.make_celery worker --loglevel=info
     links:
       - redis
     depends_on:

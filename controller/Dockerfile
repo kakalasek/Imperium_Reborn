@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Run the application
-CMD ["python", "src/controller.py"]
+CMD ["python", "run.py"]

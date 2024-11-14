@@ -11,8 +11,7 @@ import requests
 import json
 
 cracks_john = []
-endpoint = os.environ["PASSWORD_CRACKER_ENDPOINT"]
-endpoint = os.environ["PASSWORD_CRACKER_ENDPOINT"] if os.environ["PASSWORD_CRACKER_ENDPOINT"] else 'http://127.0.0.1:3000'
+endpoint = os.getenv("PASSWORD_CRACKER_ENDPOINT") if os.getenv("PASSWORD_CRACKER_ENDPOINT") else 'http://127.0.0.1:3000'
 
 def get_cracks_john() -> None:
     """

@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
         # Starting the app
 
-        app.run(host="0.0.0.0", port=os.environ["RUNNING_PORT"], debug=True)
+        app.run(host="0.0.0.0", port=os.getenv("RUNNING_PORT"), debug=True)
 
     except OperationalError as e:
         with app.app_context():
