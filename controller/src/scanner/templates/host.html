@@ -7,7 +7,7 @@
                     <div class="d-flex flex-column border border-dark rounded p-2 gap-2">
                         <div class="h4">Address</div>
                         <div>IPv4: 
-                            {% if without_mac %}
+                            {% if not mac_address_found %}
                                 {% if data["address"]["@addr"] is defined %}
                                     {{ data["address"]["@addr"]}}
                                 {% endif %}
@@ -19,14 +19,14 @@
                         </div>
                         <div>IPv6:</div>
                         <div>MAC: 
-                            {% if not without_mac %}
+                            {% if mac_address_found %}
                                 {% if data["address"][1]["@addr"] is defined %}
                                     {{ data["address"][1]["@addr"]}}
                                 {% endif %}
                             {% endif %}
                         </div>
                         <div>MAC Vendor: 
-                            {% if not without_mac %}
+                            {% if mac_address_found %}
                                 {% if data["address"][1]["@vendor"] is defined %}
                                     {{ data["address"][1]["@vendor"]}}
                                 {% endif %}

@@ -200,7 +200,7 @@ def host():
             
             if host_ip == None: 
                 raise RequestError("Host ID not provided")
-
+            
             for scan in scans:
                 if scan["id"] == scan_id:
                     scan_json = json.loads(scan["scan_json"])
@@ -220,6 +220,7 @@ def host():
                             mac_address_found = isinstance(host['address'], list)
 
                             if mac_address_found:
+
                                 if host['address'][0]['@addr'] == host_ip:
                                     host_json = host
                                     break
@@ -292,6 +293,7 @@ def show_json():
 
                             host_json = scan_json['host']
                             mac_address_found = not "@addr" in host_json['address']
+                            return host_json
 
                         else:
                             hosts = scan_json['host']
@@ -303,11 +305,11 @@ def show_json():
                                 if mac_address_found:
                                     if host['address'][0]['@addr'] == host_ip:
                                         host_json = host
-                                        break
+                                        return host_json
                                 else:
                                     if host['address']['@addr'] == host_ip:
                                         host_json = host
-                                        break
+                                        return host_json
                         break
 
                 if not host_json:  
