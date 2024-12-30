@@ -7,19 +7,23 @@ Deployment
 
 In order to successfuly deploy this application, you need to have docker installed and have your user in the docker group. You can find out, how that is done, here: https://docs.docker.com/engine/install/                
 
-After you've successfuly installed docker, you can start the deploy.sh script in the upper most directory. If you provide no arguments to this script, it will give you the **help message**, which will display all the possible arguments. Note that each tool needs to be deployed with a different can to the deploy script. The deploy script accepts only one argument. You can use it for example like this:
+You will also need the docker compose utility.
+
+After you've successfuly installed docker, you can start the deploy.sh script in the upper most directory. If you provide no arguments to this script, it will give you the **help message**, which will display all the possible arguments. Note that each tool needs to be deployed with a different call to the deploy script. The deploy script accepts **only one argument**. You can use it for example like this:
 
 ```bash
-    ./deploy.sh controller
-    ./deploy.sh scanner
+./deploy.sh controller
+./deploy.sh scanner
 ```
 
 The deploy script will deploy a few containers, including a Mariadb one. There is also the option to not use the deploy script, if you want to. Some technical knowledge is needed for that tho.
 
+The deploy script will also configure the connections to your database for you. If you deploy on more than one machine, you will need to modify the *instance/config.py* file yourself. This will be explained in the configuration phase
+
 Configuration
 ---
 
-In the upper most directory of each component, eg. controller, scanner, ... you need to create a directory called instance. In this directory, create a file called config.py. In it you need to set the uri for the database. You can use any database you want, but Mysql or Mariadb is recommended, because the package needed to connect is already installed. You can install it on a container, vm or your local machine. You also need to create a database instance there, where the components can create and fill their tables. This is and example line in the config.py directory:
+In the upper most directory of each tool, the deploy script will create this file *instace/config.py*. In this file, you can find the URI for the controller database. The IP will be set to you machines ip by default and the port 3306, on which Mariadb will run. Note than this port will be tunneled from the container, so you mustn't have anything running on that port on your pc. Alternatively, you can change it in the docker compose script. The entry in *instance/config.py* will look like this:
 
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://user:password@ip_address:port/database"
 
@@ -34,4 +38,3 @@ Here are all the possible configurations. If an endpoint is left unset, it does 
         RUNNING_PORT: "running_port"
         SCANNER_ENDPOINT: "scanner_endpoint"
 
-To install and setup the application, you first need to setup the controller and database. The recommended approach is to use a containerized database. You then configure the controller as shown above. After asuring it is working fine, you can start to setup all the components and configuring them also as shown above.
