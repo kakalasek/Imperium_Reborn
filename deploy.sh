@@ -16,12 +16,12 @@ function help
 }
 
 #############################
-# Controller Deploy         #
+# Create Config             #
 #############################
 
-function deploy_controller
+function create_config
 {
-    cd controller
+    MY_IP=`hostname -I | cut -d' ' -f1`
 
     echo "creating the instance folder"
     mkdir instance
@@ -30,7 +30,18 @@ function deploy_controller
     touch instance/config.py
 
     echo "cofiguring database uri"
-    echo "SQLALCHEMY_DATABASE_URI = \"mysql+pymysql://root:secret@192.168.0.116:3306/imperium\"" > instance/config.py
+    echo "SQLALCHEMY_DATABASE_URI = \"mysql+pymysql://root:secret@$MY_IP:3306/imperium\"" > instance/config.py
+}
+
+#############################
+# Controller Deploy         #
+#############################
+
+function deploy_controller
+{
+    cd controller
+
+    create_config
 
     echo "composing containers"
     docker compose up -d
@@ -46,14 +57,7 @@ function deploy_scanner
 {
     cd scanner
 
-    echo "creating the instance folder"
-    mkdir instance
-
-    echo "creating the config.py file"
-    touch instance/config.py
-
-    echo "cofiguring database uri"
-    echo "SQLALCHEMY_DATABASE_URI = \"mysql+pymysql://root:secret@192.168.0.116:3306/imperium\"" > instance/config.py
+    create_config
 
     echo "composing containers"
     docker compose up -d
