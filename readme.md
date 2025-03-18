@@ -18,7 +18,9 @@ After you've successfuly installed docker, you can start the deploy.sh script in
 
 The deploy script will deploy a few containers, including a Mariadb one. There is also the option to not use the deploy script, if you want to. Some technical knowledge is needed for that tho.
 
-The deploy script will also configure the connections to your database for you. If you deploy on more than one machine, you will need to modify the *instance/config.py* file yourself. This will be explained in the configuration phase
+The deploy script will also configure the connections to your database for you. If you deploy on more than one machine, you will need to modify the *instance/config.py* file yourself. This will be explained in the configuration phase.
+
+The application controller run on localhost:5000 by default.
 
 Configuration
 ---
