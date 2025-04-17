@@ -40,3 +40,8 @@ Here are all the possible configurations. If an endpoint is left unset, it does 
         RUNNING_PORT: "running_port"
         SCANNER_ENDPOINT: "scanner_endpoint"
 
+Important
+---
+
+Due to not enought time and motivation, this project has many bugs. It also will very probably be never fully finished.
+
